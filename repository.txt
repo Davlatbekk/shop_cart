@@ -1,0 +1,13 @@
+
+
+Repository
+    Module
+        Package
+
+
+
+> go mod init app
+> go get github.com/mnogu/go-calculator
+
+
+
