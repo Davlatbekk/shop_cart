@@ -9,23 +9,19 @@ import (
 
 func main() {
 
-	controller.CreateUser(
-		models.User{
-			Id: 1,
-			Name: "Shohruh",
-			Surname: "Safarov",
-		},
-	)
+	controller.GenerateUser(100)
 
-	controller.CreateUser(
-		models.User{
-			Id: 2,
-			Name: "Abduqodir",
-			Surname: "Musayev",
-		},
-	)
+	users, err := controller.GetListUser(models.GetListRequest{
+		Offset: 40,
+		Limit: 10,
+	})
 
-	for _, user := range controller.GetListUser() {
+	if err {
+		fmt.Println("users out of range")
+		return
+	}
+
+	for _, user := range users {
 		fmt.Println(user)
 	}
 }

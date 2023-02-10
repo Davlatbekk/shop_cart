@@ -5,3 +5,8 @@ type User struct {
 	Name string
 	Surname string
 }
+
+type GetListRequest struct {
+	Offset int
+	Limit int
+}
