@@ -9,7 +9,7 @@ import (
 
 func main() {
 
-	controller.GenerateUser(100)
+	controller.GenerateUser(455)
 
 	users, err := controller.GetListUser(models.GetListRequest{
 		Offset: 40,
@@ -25,3 +25,8 @@ func main() {
 		fmt.Println(user)
 	}
 }
+
+// Page Soni 46:
+// Page yozing:
+// 4
+

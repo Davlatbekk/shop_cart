@@ -18,7 +18,8 @@ func GetListUser(req models.GetListRequest) (resp []models.User, err bool){
 		return []models.User{}, true
 	}
 
-	return Users[req.Offset:req.Limit + req.Offset], false
+
+	return Users[req.Offset : req.Limit + req.Offset], false
 }
 
 func GenerateUser(count int) {
