@@ -2,31 +2,36 @@ package main
 
 import (
 	"fmt"
+	"log"
 
+	"app/config"
 	"app/controller"
 	"app/models"
+	"app/storage"
 )
 
 func main() {
 
-	controller.GenerateUser(455)
+	cfg := config.Load()
 
-	users, err := controller.GetListUser(models.GetListRequest{
-		Offset: 40,
-		Limit: 10,
-	})
+	store, err := storage.NewFileJson(&cfg)
+	if err != nil {
+		panic("error while connect to json file: " + err.Error())
+	}
 
-	if err {
-		fmt.Println("users out of range")
+	c := controller.NewController(&cfg, store)
+
+	id, err := c.CreateUser(
+		&models.CreateUser{
+			Name:    "Abduqodir",
+			Surname: "Musayev",
+		},
+	)
+
+	if err != nil {
+		log.Println("error while CreateUser:", err.Error())
 		return
 	}
 
-	for _, user := range users {
-		fmt.Println(user)
-	}
+	fmt.Println(id)
 }
-
-// Page Soni 46:
-// Page yozing:
-// 4
-
