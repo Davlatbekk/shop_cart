@@ -35,3 +35,8 @@ func main() {
 
 	fmt.Println(id)
 }
+
+// GetByPkey()
+// GetList()
+// Update(user)
+// Delete()
