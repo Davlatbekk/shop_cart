@@ -33,7 +33,7 @@ func main() {
 	// 	return
 	// }
 
-	user, err := c.GetPkeyUser(&models.UserPrimaryKey{Id: 7})
+	user, err := c.GetPkeyUser(&models.UserPrimaryKey{Id: "c985ae75-e6ff-4dd5-82a7-1fe5d6076890"})
 	if err != nil {
 		log.Println("error while GetPkeyUser:", err.Error())
 		return

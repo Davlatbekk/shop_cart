@@ -1,7 +1,7 @@
 package models
 
 type UserPrimaryKey struct {
-	Id int `json:"id"`
+	Id string `json:"id"`
 }
 
 type CreateUser struct {
@@ -10,13 +10,13 @@ type CreateUser struct {
 }
 
 type User struct {
-	Id      int    `json:"id"`
+	Id      string `json:"id"`
 	Name    string `json:"name"`
 	Surname string `json:"surname"`
 }
 
 type UpdateUser struct {
-	Id      int    `json:"id"`
+	Id      string `json:"id"`
 	Name    string `json:"name"`
 	Surname string `json:"urname"`
 }

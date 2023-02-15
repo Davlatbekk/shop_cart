@@ -8,6 +8,6 @@ type StorageI interface {
 }
 
 type UserRepoI interface {
-	Create(*models.CreateUser) (int, error)
+	Create(*models.CreateUser) (string, error)
 	GetPkey(*models.UserPrimaryKey) (*models.User, error)
 }

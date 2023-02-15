@@ -1,26 +1,6 @@
 [
    {
-      "id": 1,
-      "name": "Abduqodir",
-      "surname": "Musayev"
-   },
-   {
-      "id": 2,
-      "name": "Abduqodir",
-      "surname": "Musayev"
-   },
-   {
-      "id": 3,
-      "name": "Abduqodir",
-      "surname": "Musayev"
-   },
-   {
-      "id": 4,
-      "name": "Abduqodir",
-      "surname": "Musayev"
-   },
-   {
-      "id": 5,
+      "id": "c985ae75-e6ff-4dd5-82a7-1fe5d6076890",
       "name": "Abduqodir",
       "surname": "Musayev"
    }
