@@ -1,42 +1,43 @@
 package main
 
 import (
-	"fmt"
-	"log"
-
 	"app/config"
 	"app/controller"
 	"app/models"
-	"app/storage"
+	"app/storage/jsondb"
+	"fmt"
+	"log"
 )
 
 func main() {
 
 	cfg := config.Load()
 
-	store, err := storage.NewFileJson(&cfg)
+	jsondb, err := jsondb.NewFileJson(&cfg)
 	if err != nil {
 		panic("error while connect to json file: " + err.Error())
 	}
+	defer jsondb.CloseDB()
 
-	c := controller.NewController(&cfg, store)
+	c := controller.NewController(&cfg, jsondb)
 
-	id, err := c.CreateUser(
-		&models.CreateUser{
-			Name:    "Abduqodir",
-			Surname: "Musayev",
-		},
-	)
+	// id, err := c.CreateUser(
+	// 	&models.CreateUser{
+	// 		Name:    "Abduqodir",
+	// 		Surname: "Musayev",
+	// 	},
+	// )
 
+	// if err != nil {
+	// 	log.Println("error while CreateUser:", err.Error())
+	// 	return
+	// }
+
+	user, err := c.GetPkeyUser(&models.UserPrimaryKey{Id: 7})
 	if err != nil {
-		log.Println("error while CreateUser:", err.Error())
+		log.Println("error while GetPkeyUser:", err.Error())
 		return
 	}
 
-	fmt.Println(id)
+	fmt.Println(*user)
 }
-
-// GetByPkey()
-// GetList()
-// Update(user)
-// Delete()
