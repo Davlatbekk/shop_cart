@@ -1,0 +1,44 @@
+[
+ {
+  "id": "e4421e6d-cf37-4dd7-a87f-97c91feffaef",
+  "name": "Shokhrukh",
+  "surname": "Safarov",
+  "balance": 1696100
+ },
+ {
+  "id": "a87b3ac7-1579-4cb9-958b-31118acffd56",
+  "name": "Bekhruz",
+  "surname": "Safarov",
+  "balance": 850000
+ },
+ {
+  "id": "030b6999-03fd-4f9d-90f5-fd344f24178f",
+  "name": "Asilbek",
+  "surname": "Hamijonov",
+  "balance": 1500000
+ },
+ {
+  "id": "bbda487b-1c0f-4c93-b17f-47b8570adfa6",
+  "name": "Ibrohim",
+  "surname": "Artikov",
+  "balance": 600000
+ },
+ {
+  "id": "aee78ea0-6938-41f5-9a57-440deaf33fce",
+  "name": "Mustafo",
+  "surname": "Gulomov",
+  "balance": 400000
+ },
+ {
+  "id": "0743751d-2ae0-4637-b4d6-23f63d96d4a3",
+  "name": "Ulugbek",
+  "surname": "Alijonov",
+  "balance": 756000
+ },
+ {
+  "id": "657a41b6-1bdc-47cc-bdad-1f85eb8fb98c",
+  "name": "Asadbek",
+  "surname": "Karimov",
+  "balance": 740000
+ }
+]

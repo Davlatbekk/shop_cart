@@ -1,21 +1,21 @@
 package config
 
 type Config struct {
-	Path string
-
-	UserFileName     string
-	ProductFileName  string
-	ShopCartFileName string
+	UserFileName       string
+	ProductFileName    string
+	ShopCartFileName   string
+	CommissionFileName string
+	CategoryName       string
 }
 
 func Load() Config {
-
 	cfg := Config{}
 
-	cfg.Path = "./data"
-	cfg.UserFileName = "/customer.json"
-	cfg.ProductFileName = "/products.json"
-	cfg.ShopCartFileName = "/shopCart.json"
+	cfg.UserFileName = "./data/user.json"
+	cfg.ProductFileName = "./data/product.json"
+	cfg.ShopCartFileName = "./data/shop_cart.json"
+	cfg.CommissionFileName = "./data/commission.json"
+	cfg.CategoryName = "./data/category.json"
 
 	return cfg
 }

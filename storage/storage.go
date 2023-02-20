@@ -1,32 +1,49 @@
 package storage
 
-import "app/models"
+import (
+	"app/models"
+)
 
 type StorageI interface {
-	CloseDB()
+	CloseDb()
 	User() UserRepoI
 	Product() ProductRepoI
 	ShopCart() ShopCartRepoI
+	Commission() CommissionRepoI
+	Category() CategoryRepoI
 }
 
 type UserRepoI interface {
 	Create(*models.CreateUser) (string, error)
-	GetUserById(req *models.UserPrimaryKey) (models.User, error)
-	GetList(req *models.GetListRequest) (*models.GetListResponse, error)
-	UpdateUser(req *models.UpdateUser) (models.User, error)
-	DeleteUser(req *models.UserPrimaryKey) (models.User, error)
+	Delete(*models.UserPrimaryKey) error
+	Update(*models.UpdateUser, string) error
+	GetByID(*models.UserPrimaryKey) (models.User, error)
+	GetAll(*models.GetListRequest) (models.GetListResponse, error)
 }
 
 type ProductRepoI interface {
-	CreateProduct(req *models.CreateProduct) (id string, err error)
-	GetListProduct(req *models.GetListProductRequest) (*models.GetListProductResponse, error)
-	GetProductById(req *models.ProductPrimaryKey) (models.Product, error)
-	UpdateProduct(req *models.UpdateProduct) (models.Product, error)
-	DeleteProduct(req *models.ProductPrimaryKey) (models.Product, error)
+	Create(*models.CreateProduct) (string, error)
+	Delete(*models.ProductPrimaryKey) error
+	Update(*models.UpdateProduct, string) error
+	GetByID(*models.ProductPrimaryKey) (models.Product, error)
+	GetAll() (models.GetListProduct, error)
 }
 
 type ShopCartRepoI interface {
-	AddShopCart(req *models.AddShopCart) (models.ShopCart, error)
-	RemoveShopCart(req *models.RemoveShopCart) (models.ShopCart, error)
-	GetUserShopCarts(req *models.UserPrimaryKey) ([]models.ShopCart, error)
+	AddShopCart(*models.Add) (string, error)
+	RemoveShopCart(*models.Remove) error
+	GetUserShopCart(*models.UserPrimaryKey) ([]models.ShopCart, error)
+	UpdateShopCart(string) error
+}
+
+type CommissionRepoI interface {
+	AddCommission(*models.Commission) error
+}
+
+type CategoryRepoI interface {
+	Create(*models.CreateCategory) (string, error)
+	GetByID(*models.CategoryPrimaryKey) (models.Category, error)
+	GetAll(*models.GetListCategoryRequest) (models.GetListCategoryResponse, error)
+	Update(*models.UpdateCategory, string) error
+	Delete(*models.CategoryPrimaryKey) error
 }

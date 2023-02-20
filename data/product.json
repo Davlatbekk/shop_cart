@@ -1,0 +1,37 @@
+[
+ {
+  "id": "31216468-60bd-4694-b5a8-6da80febfdf6",
+  "name": "Coca-Cola",
+  "price": 8000
+ },
+ {
+  "id": "49d74d31-0f2b-453c-a356-5ee753a35785",
+  "name": "Flint",
+  "price": 5000
+ },
+ {
+  "id": "ce06cf2e-6577-46cb-96a3-1cea379bde4b",
+  "name": "Bread",
+  "price": 2800
+ },
+ {
+  "id": "4f148546-fa00-4f6c-a989-7f9fb90faf99",
+  "name": "Chips",
+  "price": 7000
+ },
+ {
+  "id": "d8824212-de5f-403c-8996-fbb6d40797cc",
+  "name": "Fanta",
+  "price": 8000
+ },
+ {
+  "id": "51938ecd-bbc2-4b07-8d3a-0d9b48c758c0",
+  "name": "Paper",
+  "price": 3000
+ },
+ {
+  "id": "4e14caca-9456-4951-8934-e3fd17b4305a",
+  "name": "Shampoo",
+  "price": 15000
+ }
+]

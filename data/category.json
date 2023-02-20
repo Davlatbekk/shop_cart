@@ -1,0 +1,14 @@
+[
+ {
+  "id": "eed2e676-1f17-429f-b75c-899eda296e65",
+  "name": "Elektronika",
+  "parent_id": "",
+  "sub_categories": null
+ },
+ {
+  "id": "6325b81f-9a2b-48ef-8d38-5cef642fed6b",
+  "name": "Smartfonlar va telefonlar",
+  "parent_id": "eed2e676-1f17-429f-b75c-899eda296e65",
+  "sub_categories": null
+ }
+]
