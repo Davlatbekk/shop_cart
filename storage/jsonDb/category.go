@@ -60,6 +60,13 @@ func (u *categoryRepo) GetByID(req *models.CategoryPrimaryKey) (models.Category,
 
 	for _, v := range categories {
 		if v.Id == req.Id {
+
+			for _, subCategory := range categories {
+				if v.Id == subCategory.ParentID {
+					v.SubCategories = append(v.SubCategories, subCategory)
+				}
+			}
+
 			return v, nil
 		}
 	}
@@ -77,9 +84,9 @@ func (u *categoryRepo) GetAll(req *models.GetListCategoryRequest) (models.GetLis
 		return models.GetListCategoryResponse{}, errors.New("out of range")
 	}
 
-	Categories := []*models.Category{}
+	Categories := []models.Category{}
 	for i := req.Offset; i < req.Offset+req.Limit; i++ {
-		Categories = append(Categories, &categories[i])
+		Categories = append(Categories, categories[i])
 	}
 	return models.GetListCategoryResponse{
 		Categories: Categories,

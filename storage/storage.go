@@ -23,10 +23,10 @@ type UserRepoI interface {
 
 type ProductRepoI interface {
 	Create(*models.CreateProduct) (string, error)
-	Delete(*models.ProductPrimaryKey) error
-	Update(*models.UpdateProduct, string) error
-	GetByID(*models.ProductPrimaryKey) (models.Product, error)
+	GetByID(*models.ProductPrimaryKey) (models.ProductWithCategory, error)
 	GetAll() (models.GetListProduct, error)
+	Update(*models.UpdateProduct, string) error
+	Delete(*models.ProductPrimaryKey) error
 }
 
 type ShopCartRepoI interface {

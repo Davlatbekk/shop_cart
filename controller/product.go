@@ -31,7 +31,18 @@ func (c *Controller) GetByIdProduct(req *models.ProductPrimaryKey) (models.Produ
 	if err != nil {
 		return models.Product{}, err
 	}
-	return product, nil
+
+	category, err := c.store.Category().GetByID(&models.CategoryPrimaryKey{Id: product.CategoryID})
+	if err != nil {
+		return models.Product{}, err
+	}
+
+	return models.Product{
+		Id:       product.Id,
+		Name:     product.Name,
+		Price:    product.Price,
+		Category: category,
+	}, nil
 }
 
 func (c *Controller) GetAllProduct() (models.GetListProduct, error) {

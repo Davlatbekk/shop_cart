@@ -20,31 +20,18 @@ func NewProductRepo(fileName string) *productRepo {
 	}
 }
 
-func (p *productRepo) Read() ([]models.Product, error) {
-	data, err := ioutil.ReadFile(p.fileName)
-	if err != nil {
-		return []models.Product{}, err
-	}
-
-	var products []models.Product
-	err = json.Unmarshal(data, &products)
-	if err != nil {
-		return []models.Product{}, err
-	}
-	return products, nil
-}
-
 func (p *productRepo) Create(req *models.CreateProduct) (string, error) {
-	products, err := p.Read()
+	products, err := p.ReadWithCategory()
 	if err != nil {
 		return "", err
 	}
 
 	uuid := uuid.New().String()
-	products = append(products, models.Product{
-		Id:    uuid,
-		Name:  req.Name,
-		Price: req.Price,
+	products = append(products, models.ProductWithCategory{
+		Id:         uuid,
+		Name:       req.Name,
+		Price:      req.Price,
+		CategoryID: req.CategoryID,
 	})
 
 	body, err := json.MarshalIndent(products, "", " ")
@@ -115,15 +102,15 @@ func (p *productRepo) Update(req *models.UpdateProduct, productId string) error 
 
 	err = ioutil.WriteFile(p.fileName, body, os.ModePerm)
 	if err != nil {
-		return err	
+		return err
 	}
 	return nil
 }
 
-func (p *productRepo) GetByID(req *models.ProductPrimaryKey) (models.Product, error) {
-	products, err := p.Read()
+func (p *productRepo) GetByID(req *models.ProductPrimaryKey) (models.ProductWithCategory, error) {
+	products, err := p.ReadWithCategory()
 	if err != nil {
-		return models.Product{}, err
+		return models.ProductWithCategory{}, err
 	}
 
 	for _, v := range products {
@@ -132,7 +119,7 @@ func (p *productRepo) GetByID(req *models.ProductPrimaryKey) (models.Product, er
 		}
 	}
 
-	return models.Product{}, errors.New("There is no product with this id")
+	return models.ProductWithCategory{}, errors.New("There is no product with this id")
 }
 
 func (p *productRepo) GetAll() (models.GetListProduct, error) {
@@ -142,6 +129,34 @@ func (p *productRepo) GetAll() (models.GetListProduct, error) {
 	}
 	return models.GetListProduct{
 		Products: products,
-		Count: len(products),
+		Count:    len(products),
 	}, nil
+}
+
+func (p *productRepo) Read() ([]models.Product, error) {
+	data, err := ioutil.ReadFile(p.fileName)
+	if err != nil {
+		return []models.Product{}, err
+	}
+
+	var products []models.Product
+	err = json.Unmarshal(data, &products)
+	if err != nil {
+		return []models.Product{}, err
+	}
+	return products, nil
+}
+
+func (p *productRepo) ReadWithCategory() ([]models.ProductWithCategory, error) {
+	data, err := ioutil.ReadFile(p.fileName)
+	if err != nil {
+		return []models.ProductWithCategory{}, err
+	}
+
+	var products []models.ProductWithCategory
+	err = json.Unmarshal(data, &products)
+	if err != nil {
+		return []models.ProductWithCategory{}, err
+	}
+	return products, nil
 }

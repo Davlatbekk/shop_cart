@@ -1,10 +1,10 @@
 package models
 
 type Category struct {
-	Id            string      `json:"id"`
-	Name          string      `json:"name"`
-	ParentID      string      `json:"parent_id"`
-	SubCategories []*Category `json:"sub_categories"`
+	Id            string     `json:"id"`
+	Name          string     `json:"name"`
+	ParentID      string     `json:"parent_id"`
+	SubCategories []Category `json:"sub_categories"`
 }
 
 type CategoryPrimaryKey struct {
@@ -28,6 +28,6 @@ type GetListCategoryRequest struct {
 }
 
 type GetListCategoryResponse struct {
-	Count      int         `json:"count"`
-	Categories []*Category `json:"categories"`
+	Count      int        `json:"count"`
+	Categories []Category `json:"categories"`
 }
